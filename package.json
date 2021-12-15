@@ -12,6 +12,7 @@
     "styled-components": "^5.3.3"
   },
   "scripts": {
+    "postinstall": "node bin/fetchDocs",
     "dev": "next dev",
     "build": "next build && next export -o build/",
     "postbuild": "react-snap"
