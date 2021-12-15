@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic'
 import { createGlobalStyle } from 'styled-components'
 import { useLocation, Link, BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useState, useEffect } from 'react'
 import Post from 'components/Post'
-import docsData from 'data/docs'
+import DocsProvider from 'components/DocsProvider'
+import { useDocs } from 'hooks'
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -32,11 +32,7 @@ const GlobalStyle = createGlobalStyle`
 
 function AppRoutes() {
   const location = useLocation()
-  const [docs, setDocs] = useState([])
-
-  useEffect(() => void Promise.all(docsData).then(setDocs), [])
-
-  if (docs?.length) console.log('docs', docs)
+  const docs = useDocs()
 
   return (
     <Routes key={location.pathname} location={location}>
@@ -53,15 +49,7 @@ function AppRoutes() {
         }
       />
       {docs.map((doc) => (
-        <Route
-          key={doc.key}
-          path={doc.path}
-          element={
-            <Post>
-              <doc.default />
-            </Post>
-          }
-        />
+        <Route key={doc.key} path={doc.path} element={<Post {...doc} />} />
       ))}
       <Route path="*" element={<p>404</p>} />
     </Routes>
@@ -72,7 +60,9 @@ function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <AppRoutes />
+      <DocsProvider>
+        <AppRoutes />
+      </DocsProvider>
     </BrowserRouter>
   )
 }
