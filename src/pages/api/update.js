@@ -1,8 +1,8 @@
-const crypto = require('crypto')
-const { fetch } = require('fetch-h2')
-const librariesData = require('../src/data/libraries.json')
+import crypto from 'crypto'
+import { request } from 'undici'
+import librariesData from 'data/libraries.json'
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   const { repository, ref, head_commit } = req.body
 
   try {
@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
     if (!changes.length) return res.status(304)
 
     // Update docs
-    await fetch(process.env.VERCEL_DEPLOY_WEBHOOK, { method: 'POST' })
+    await request(process.env.VERCEL_DEPLOY_WEBHOOK, { method: 'POST' })
 
     return res.status(201).json({ message: `${changes.length} docs updated` })
   } catch (error) {
