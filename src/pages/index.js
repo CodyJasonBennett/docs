@@ -7,7 +7,7 @@ function Home() {
   return (
     <p>
       {docs.map((doc) => (
-        <Link key={doc.key} href={doc.path}>
+        <Link key={doc.params.key} href={doc.params.path}>
           <a>{doc.frontMatter.title}</a>
         </Link>
       ))}

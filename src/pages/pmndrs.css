@@ -1,0 +1,85 @@
+/**
+ * Modified pmndrs theme by Paul Henschel
+ * https://marketplace.visualstudio.com/items?itemName=pmndrs.pmndrs
+ */
+
+pre {
+  --background: #252b37;
+  --color: #e4f0fb;
+  --shadow: rgba(var(--rgb-black), 0.3);
+  --comment: #a6accd;
+  --punctuation: #e4f0fb;
+  --property: #e4f0fb;
+  --boolean: #5de4c7;
+  --string: #5de4c7;
+  --operator: #add7ff;
+  --function: #5de4c7;
+  --keyword: #add7ff;
+  --literal: #fffac2;
+
+  background: var(--background);
+  color: var(--color);
+  text-shadow: 0 1px var(--shadow);
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--comment);
+}
+
+.token.punctuation {
+  color: var(--punctuation);
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: var(--property);
+}
+
+.token.boolean,
+.token.number {
+  color: var(--boolean);
+}
+
+.token.selector,
+.token.attr-value,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: var(--string);
+}
+
+.token.attr-name,
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: var(--operator);
+}
+
+.token.atrule,
+.token.function,
+.token.class-name {
+  color: var(--function);
+}
+
+.token.keyword {
+  color: var(--keyword);
+}
+
+.token.regex,
+.token.important {
+  color: var(--literal);
+}

@@ -10,7 +10,7 @@ export default function PostPage({ slug }) {
 export const getStaticProps = async ({ params }) => ({ props: params })
 
 export const getStaticPaths = async () => {
-  const paths = getPaths().map(({ slug }) => ({ params: { slug } }))
+  const paths = getPaths().map((params) => ({ params }))
 
   return {
     paths,

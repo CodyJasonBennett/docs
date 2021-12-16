@@ -20,16 +20,13 @@ export const getPaths = () =>
  */
 export const getDocs = async () =>
   Promise.all(
-    getPaths().map(async ({ key, path, slug }) => {
+    getPaths().map(async (params) => {
       // Transpile doc
-      const { default: Content, ...doc } = await docs(key)
+      const { default: Content, ...doc } = await docs(params.key)
 
       // Build content JSX
       const children = <Content />
 
-      // Build ToC
-      const tableOfContents = doc.tableOfContents()
-
-      return { ...doc, key, path, slug, children, tableOfContents }
+      return { ...doc, params, children }
     }),
   )

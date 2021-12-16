@@ -1,12 +1,11 @@
-import ThemeProvider from 'components/ThemeProvider'
 import DocsProvider from 'components/DocsProvider'
+import './index.css'
+import './pmndrs.css'
 
 export default function App({ Component, pageProps }) {
   return (
-    <ThemeProvider>
-      <DocsProvider>
-        <Component {...pageProps} />
-      </DocsProvider>
-    </ThemeProvider>
+    <DocsProvider>
+      <Component {...pageProps} />
+    </DocsProvider>
   )
 }
