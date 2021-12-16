@@ -3,10 +3,9 @@ module.exports = {
   experimental: {
     styledComponents: true,
   },
-  exportPathMap: async () => ({ '/': { page: '/[[...slug]]' } }),
   webpack(config) {
     config.module.rules.push({
-      test: /\.mdx$/,
+      test: /\.mdx?$/,
       use: ['next-swc-loader', 'mdx-loader'],
     })
 

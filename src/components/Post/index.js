@@ -15,10 +15,6 @@ const components = {
   },
 }
 
-export default function Post({ default: Content }) {
-  return (
-    <MDXProvider components={components}>
-      <Content />
-    </MDXProvider>
-  )
+export default function Post({ children }) {
+  return <MDXProvider components={components}>{children}</MDXProvider>
 }
