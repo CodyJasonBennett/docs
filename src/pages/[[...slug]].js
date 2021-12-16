@@ -1,15 +1,14 @@
-import dynamic from 'next/dynamic'
-import { useLocation, Link, BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link, BrowserRouter } from 'react-router-dom'
+import { StaticRouter } from 'react-router-dom/server'
 import Post from 'components/Post'
 import ThemeProvider from 'components/ThemeProvider'
 import DocsProvider, { useDocs } from 'components/DocsProvider'
 
 function AppRoutes() {
-  const location = useLocation()
   const docs = useDocs()
 
   return (
-    <Routes key={location.pathname} location={location}>
+    <Routes>
       <Route
         path="/"
         element={
@@ -31,18 +30,17 @@ function AppRoutes() {
 }
 
 function App() {
+  const Router = typeof window === 'undefined' ? StaticRouter : BrowserRouter
+
   return (
-    <BrowserRouter>
-      <ThemeProvider themeId="dark">
-        <DocsProvider>
+    <ThemeProvider>
+      <DocsProvider>
+        <Router>
           <AppRoutes />
-        </DocsProvider>
-      </ThemeProvider>
-    </BrowserRouter>
+        </Router>
+      </DocsProvider>
+    </ThemeProvider>
   )
 }
 
-// Disable SSR globally
-export default dynamic(() => Promise.resolve(App), {
-  ssr: false,
-})
+export default App

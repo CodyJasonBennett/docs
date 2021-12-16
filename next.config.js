@@ -3,17 +3,12 @@ module.exports = {
   experimental: {
     styledComponents: true,
   },
+  exportPathMap: async () => ({ '/': { page: '/[[...slug]]' } }),
   webpack(config) {
-    config.module.rules.push(
-      {
-        test: /\.(woff2|png|jpg|mp4|glb)$/,
-        type: 'asset/resource',
-      },
-      {
-        test: /\.mdx$/,
-        use: ['next-swc-loader', 'mdx-loader'],
-      },
-    )
+    config.module.rules.push({
+      test: /\.mdx$/,
+      use: ['next-swc-loader', 'mdx-loader'],
+    })
 
     return config
   },
