@@ -1,34 +1,8 @@
 import dynamic from 'next/dynamic'
-import { createGlobalStyle } from 'styled-components'
 import { useLocation, Link, BrowserRouter, Routes, Route } from 'react-router-dom'
 import Post from 'components/Post'
-import DocsProvider from 'components/DocsProvider'
-import { useDocs } from 'hooks'
-
-const GlobalStyle = createGlobalStyle`
-  *,
-  *::before,
-  *::after {
-    appearance: none;
-    background-color: transparent;
-    border-radius: 0;
-    border: 0;
-    box-sizing: inherit;
-    font-family: inherit;
-    margin: 0;
-    outline: none;
-    padding: 0;
-    text-decoration: none;
-  }
-
-  body {
-    box-sizing: border-box;
-    font-synthesis: none;
-    overflow-x: hidden;
-    text-rendering: optimizeLegibility;
-    width: 100vw;
-  }
-`
+import ThemeProvider from 'components/ThemeProvider'
+import DocsProvider, { useDocs } from 'components/DocsProvider'
 
 function AppRoutes() {
   const location = useLocation()
@@ -59,10 +33,11 @@ function AppRoutes() {
 function App() {
   return (
     <BrowserRouter>
-      <GlobalStyle />
-      <DocsProvider>
-        <AppRoutes />
-      </DocsProvider>
+      <ThemeProvider themeId="dark">
+        <DocsProvider>
+          <AppRoutes />
+        </DocsProvider>
+      </ThemeProvider>
     </BrowserRouter>
   )
 }
