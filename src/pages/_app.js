@@ -1,6 +1,5 @@
 import DocsProvider from 'components/DocsProvider'
-import './index.css'
-import './pmndrs.css'
+import 'styles/index.css'
 
 export default function App({ Component, pageProps }) {
   return (

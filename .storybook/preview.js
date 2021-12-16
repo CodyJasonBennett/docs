@@ -1,5 +1,4 @@
-import '../src/pages/index.css'
-import '../src/pages/pmndrs.css'
+import '../src/styles/index.css'
 import './preview.css'
 
 export const parameters = {
