@@ -4,7 +4,9 @@ import 'styles/index.css'
 export default function App({ Component, pageProps }) {
   return (
     <DocsProvider>
-      <Component {...pageProps} />
+      <main>
+        <Component {...pageProps} />
+      </main>
     </DocsProvider>
   )
 }

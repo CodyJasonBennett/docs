@@ -22,7 +22,6 @@
 
 body {
   box-sizing: border-box;
-  font-feature-settings: 'liga' on, 'calt' on;
   overflow-x: hidden;
   text-align: start;
   width: 100vw;

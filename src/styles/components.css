@@ -1,9 +1,59 @@
+main {
+  display: grid;
+  padding: var(--space-2xl);
+  row-gap: var(--space-l);
+}
+
+b,
+strong {
+  color: rgb(var(--rgb-foreground));
+  font-weight: var(--font-weight-semibold);
+}
+
 h1,
-h2,
-h3,
-h4 {
-  line-height: var(--line-height-title);
+h2 {
   color: var(--color-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-title);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h1 + p {
+  font-size: var(--font-size-body-l);
+  color: var(--color-light);
+}
+
+p + h2 {
+  margin-top: var(--space-2xl);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+ul {
+  padding-left: 1.4em;
+  display: grid;
+  grid-gap: var(--space-l);
+  margin: var(--space-s) 0;
+}
+
+li {
+  list-style: square;
+  padding-left: 0.4em;
+}
+
+li::marker {
+  color: rgb(var(--rgb-border));
+}
+
+blockquote {
+  background: rgb(var(--rgb-foreground), 0.08);
+  border-left: 3px solid rgb(var(--rgb-border));
+  padding: 16px 18px;
 }
 
 pre,
@@ -29,7 +79,7 @@ pre {
 
 /* Inline code */
 :not(pre) > code {
-  background: rgba(var(--rgb-text), 0.1);
+  background: rgba(var(--rgb-foreground), 0.1);
   border-radius: 0.25rem;
   color: var(--color-title);
   padding: 0.25rem 0.5rem;
