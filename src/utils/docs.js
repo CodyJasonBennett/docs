@@ -29,7 +29,7 @@ export const getDocs = async () =>
     getPaths().map(async (params) => {
       // Parse MDX
       const source = await docs(params.key)
-      const { data: frontmatter, content } = matter(source)
+      const { data, content } = matter(source)
 
       // Compile MDX into JS source
       const compiled = await compile(content, {
@@ -38,14 +38,10 @@ export const getDocs = async () =>
         providerImportSource: '@mdx-js/react',
       })
 
-      // Construct JSX scope at runtime and eval compiled source
-      const scope = { ...mdx, ...runtime }
-      const hydrate = Reflect.construct(Function, [compiled])
-      const Content = hydrate.apply(hydrate, [scope]).default
-
-      // Build JSX
+      // Eval and build JSX at runtime
+      const Content = new Function(compiled)({ ...mdx, ...runtime }).default
       const children = <Content />
 
-      return { params, frontmatter, children }
+      return { ...data, params, children }
     }),
   )

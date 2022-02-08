@@ -17,6 +17,6 @@ module.exports = {
     config.resolve.modules.push('src')
 
     // Use Next Webpack config
-    return nextOptions.webpack(config, { isServer: false })
+    return nextOptions.webpack(config)
   },
 }
