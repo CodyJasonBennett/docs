@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
   --rgb-black: 0, 0, 0;
@@ -11,11 +11,8 @@
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
-  --font-size-h1: calc((32 / 16) * 1rem);
-  --font-size-h2: calc((20 / 16) * 1rem);
-  --font-size-body-l: calc((18 / 16) * 1rem);
-  --font-size-body-m: calc((16 / 16) * 1rem);
-  --font-size-body-s: calc((14 / 16) * 1rem);
+  --font-size-h2: calc((40 / 16) * 1rem);
+  --font-size-body: calc((20 / 16) * 1rem);
   --line-height-title: 1.1;
   --line-height-body: 1.5;
   --space-xs: 4px;
@@ -69,8 +66,8 @@ body {
   background: rgba(var(--rgb-background));
   color: var(--color-body);
   font-family: var(--font-stack);
-  font-size: var(--font-size-body-s);
-  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
   line-height: var(--line-height-body);
 }
 
