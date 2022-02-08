@@ -1,6 +1,7 @@
 import matter from 'gray-matter'
 import { compile } from '@mdx-js/mdx'
 import prism from 'mdx-prism'
+import { embeds, tableOfContents } from './rehype'
 import * as mdx from '@mdx-js/react'
 import * as runtime from 'react/jsx-runtime.js'
 
@@ -32,8 +33,9 @@ export const getDocs = async () =>
       const { data, content } = matter(source)
 
       // Compile MDX into JS source
+      const toc = []
       const compiled = await compile(content, {
-        rehypePlugins: [prism],
+        rehypePlugins: [prism, embeds, tableOfContents(toc)],
         outputFormat: 'function-body',
         providerImportSource: '@mdx-js/react',
       })
@@ -42,6 +44,6 @@ export const getDocs = async () =>
       const Content = new Function(compiled)({ ...mdx, ...runtime }).default
       const children = <Content />
 
-      return { ...data, params, children }
+      return { ...data, params, toc, children }
     }),
   )
