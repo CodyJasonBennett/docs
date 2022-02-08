@@ -1,5 +1,4 @@
 import crypto from 'crypto'
-import { request } from 'undici'
 import librariesData from 'data/libraries.json'
 
 export default async function handler(req, res) {
@@ -31,7 +30,7 @@ export default async function handler(req, res) {
     if (!changes.length) return res.status(304)
 
     // Update docs
-    await request(process.env.VERCEL_DEPLOY_WEBHOOK, { method: 'POST' })
+    await fetch(process.env.VERCEL_DEPLOY_WEBHOOK, { method: 'POST' })
 
     return res.status(201).json({ message: `${changes.length} docs updated` })
   } catch (error) {

@@ -3,7 +3,7 @@ module.exports = {
   webpack(config) {
     config.module.rules.push({
       test: /\.mdx?$/,
-      use: ['next-swc-loader', 'mdx-loader'],
+      type: 'asset/source',
     })
 
     return config

@@ -1,18 +1,19 @@
 {
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.3.12",
-    "@storybook/addon-essentials": "^6.3.12",
-    "@storybook/builder-webpack5": "^6.3.12",
-    "@storybook/manager-webpack5": "^6.3.12",
-    "@storybook/react": "^6.3.12",
-    "mdx-loader": "^3.0.2"
+    "@mdx-js/mdx": "^2.0.0",
+    "@storybook/addon-a11y": "^6.4.18",
+    "@storybook/addon-essentials": "^6.4.18",
+    "@storybook/builder-webpack5": "^6.4.18",
+    "@storybook/manager-webpack5": "^6.4.18",
+    "@storybook/react": "^6.4.18",
+    "gray-matter": "^4.0.3",
+    "mdx-prism": "^0.3.4"
   },
   "dependencies": {
-    "@mdx-js/react": "^1.6.22",
-    "next": "^12.0.7",
+    "@mdx-js/react": "^2.0.0",
+    "next": "^12.0.10",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "undici": "^4.12.0"
+    "react-dom": "^17.0.2"
   },
   "scripts": {
     "postinstall": "node bin/fetchDocs",
