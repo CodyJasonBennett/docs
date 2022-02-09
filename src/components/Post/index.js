@@ -6,6 +6,18 @@ const components = {
   Preview,
 }
 
-export default function Post({ children }) {
-  return <MDXProvider components={components}>{children}</MDXProvider>
+export default function Post({ title, description, children }) {
+  return (
+    <MDXProvider components={components}>
+      {title && (
+        <>
+          <h1>{title}</h1>
+          {description && <p>{description}</p>}
+          <hr />
+        </>
+      )}
+
+      {children}
+    </MDXProvider>
+  )
 }
