@@ -1,14 +1,11 @@
 import Link from 'next/link'
-import { useDocs } from 'hooks'
 
-function Home() {
-  const docs = useDocs()
-
+function Home({ docs }) {
   return (
     <p>
-      {docs.map((doc) => (
-        <Link key={doc.params.key} href={doc.params.path}>
-          <a>{doc.title}</a>
+      {docs?.map(({ key, path, title }) => (
+        <Link key={key} href={path}>
+          <a>{title}</a>
         </Link>
       ))}
     </p>
