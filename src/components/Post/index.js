@@ -3,7 +3,6 @@ import Preview from 'components/Preview'
 
 const components = {
   iframe: Preview,
-  Preview,
 }
 
 export default function Post({ title, description, children }) {
@@ -16,7 +15,6 @@ export default function Post({ title, description, children }) {
           <hr />
         </>
       )}
-
       {children}
     </MDXProvider>
   )

@@ -3,9 +3,9 @@ import Link from 'next/link'
 function Home({ docs }) {
   return (
     <p>
-      {docs?.map(({ key, path, title }) => (
-        <Link key={key} href={path}>
-          <a>{title}</a>
+      {docs?.map(({ path, slug, data }) => (
+        <Link key={path} href={`/${slug.join('/')}`}>
+          <a>{data.title}</a>
         </Link>
       ))}
     </p>

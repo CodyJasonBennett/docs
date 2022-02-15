@@ -1,25 +1,24 @@
 {
   "devDependencies": {
-    "@mdx-js/mdx": "^2.0.0",
-    "@storybook/addon-a11y": "^6.4.18",
-    "@storybook/addon-essentials": "^6.4.18",
-    "@storybook/builder-webpack5": "^6.4.18",
-    "@storybook/manager-webpack5": "^6.4.18",
-    "@storybook/react": "^6.4.18",
-    "gray-matter": "^4.0.3",
-    "mdx-prism": "^0.3.4"
+    "@storybook/addon-a11y": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/react": "^6.4.19"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^2.0.0",
     "@mdx-js/react": "^2.0.0",
+    "gray-matter": "^4.0.3",
+    "isomorphic-git": "^1.11.2",
+    "mdx-prism": "^0.3.4",
+    "memfs": "^3.4.1",
     "next": "^12.0.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "scripts": {
-    "postinstall": "node bin/fetchDocs",
     "dev": "next dev",
     "build": "next build",
     "build-storybook": "build-storybook -o build-storybook",
-    "storybook": "start-storybook -p 9009 -s public --no-manager-cache"
+    "storybook": "start-storybook -p 9009 -s public"
   }
 }

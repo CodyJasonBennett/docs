@@ -70,6 +70,7 @@ main {
 @media (max-width: 1024px) {
   main {
     --grid-gap: 24px;
+
     margin: 64px 48px;
     max-width: 100%;
   }
