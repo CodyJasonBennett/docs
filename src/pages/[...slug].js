@@ -1,12 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useMemo } from 'react'
 import Post from 'components/Post'
 import { hydrate, getDocs } from 'utils/docs'
 
 export default function PostPage({ data, content }) {
-  const [post, setPost] = useState()
-
-  useEffect(() => void hydrate(content).then(setPost), [])
-
+  const post = useMemo(() => hydrate(content), [content])
   return <Post {...data} {...post} />
 }
 
