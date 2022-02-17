@@ -12,8 +12,15 @@ export default function PostPage({ data, content }) {
 
 export const getStaticProps = async ({ params }) => {
   const docs = await getDocs(...params.slug)
-  const props = docs.get(params.slug.join('/'))
-  if (!props) return { notFound: true }
+  if (!docs) return { notFound: true }
+
+  const pathname = params.slug.join('/')
+  const props = docs.get(pathname)
+
+  if (!props) {
+    const alternate = Array.from(docs.keys()).find((key) => key.startsWith(pathname))
+    return alternate ? { redirect: { permanent: false, destination: `/${alternate}` } } : { notFound: true }
+  }
 
   return { props, revalidate: 300 }
 }
