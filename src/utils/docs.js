@@ -1,11 +1,12 @@
 import { fs } from 'memfs'
+import git from 'isomorphic-git'
+import http from 'isomorphic-git/http/node'
 import matter from 'gray-matter'
 import { compile } from '@mdx-js/mdx'
 import * as mdx from '@mdx-js/react'
 import * as runtime from 'react/jsx-runtime.js'
 import prism from 'mdx-prism'
 import { embeds, tableOfContents } from './rehype'
-import { pull } from './git'
 import libs from 'data/libraries'
 
 const MDX_REGEX = /\.mdx?$/
@@ -53,14 +54,16 @@ export const getDocs = async (lib) => {
   const params = getParams(lib)
   if (!params) return
 
-  // Clone or fetch remote
-  const needsUpdate = await pull(params)
-
-  // ISR only works in production, but there we can throw to bail
-  // on revalidation, preserving the cached version from the CDN.
-  if (!needsUpdate && process.env.NODE_ENV === 'production') {
-    throw 'No changes were made, skipping'
-  }
+  // Clone remote
+  await git.clone({
+    fs,
+    http,
+    dir: params.dir,
+    url: `https://github.com/${params.repo}`,
+    ref: params.branch,
+    singleBranch: true,
+    depth: 1,
+  })
 
   // Crawl and parse docs
   const files = await crawl(params.entry, MDX_REGEX)
