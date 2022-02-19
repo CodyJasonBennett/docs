@@ -1,15 +1,14 @@
 import Link from 'next/link'
+import libs from 'data/libraries'
 
-function Home({ docs }) {
+export default function Home() {
   return (
     <p>
-      {docs?.map(({ path, slug, data }) => (
-        <Link key={path} href={`/${slug.join('/')}`}>
+      {Object.entries(libs).map(([key, data]) => (
+        <Link key={key} href={`/${key}`}>
           <a>{data.title}</a>
         </Link>
       ))}
     </p>
   )
 }
-
-export default Home
